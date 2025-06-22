@@ -1,0 +1,37 @@
+@startuml
+class TerminalDevice {
+  +system: TeachingManagementSystem
+  +open_login_interface()
+  +send_credentials()
+  +request_course_selection()
+  +submit_course_selection()
+  +request_personal_schedule()
+  +request_grades()
+  +request_taught_courses_and_students()
+  +request_system_content_management()
+  +submit_operation_request()
+}
+class TeachingManagementSystem {
+  +server: Server
+  +verify_credentials()
+  +store_login_record()
+  +display_course_list()
+  +confirm_course_selection()
+  +update_personal_schedule()
+  +display_personal_schedule()
+  +display_grades()
+  +share_teacher_course_data()
+  +display_taught_courses_and_students()
+  +store_system_config_data()
+  +display_manageable_options()
+  +confirm_operation()
+}
+class Server {
+  +authenticate_user()
+  +save_login_record()
+  +share_course_data()
+  +save_system_config_data()
+}
+TerminalDevice --> TeachingManagementSystem
+TeachingManagementSystem --> Server
+@enduml

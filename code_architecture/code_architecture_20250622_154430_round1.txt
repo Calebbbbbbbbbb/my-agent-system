@@ -1,0 +1,269 @@
+【代码架构文档】
+[
+  {
+    "模块名称": "终端设备交互",
+    "文件路径": "/terminal/terminal_interaction.py",
+    "包含函数": [
+      {
+        "函数名": "open_login_interface",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "打开系统登录界面"
+      },
+      {
+        "函数名": "send_credentials",
+        "输入参数": ["username: str", "password: str"],
+        "返回类型": "None",
+        "功能说明": "发送用户名和密码到教学管理系统"
+      },
+      {
+        "函数名": "request_course_selection",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "请求课程选择功能"
+      },
+      {
+        "函数名": "submit_course_selection",
+        "输入参数": ["course: str"],
+        "返回类型": "None",
+        "功能说明": "提交课程选择"
+      },
+      {
+        "函数名": "request_personal_schedule",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "请求个人课表信息"
+      },
+      {
+        "函数名": "request_grades",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "请求成绩信息"
+      },
+      {
+        "函数名": "request_taught_courses_and_students",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "请求所授课程及学生名单信息"
+      },
+      {
+        "函数名": "request_system_content_management",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "请求系统内容管理功能"
+      },
+      {
+        "函数名": "submit_operation_request",
+        "输入参数": ["operation: str"],
+        "返回类型": "None",
+        "功能说明": "提交操作请求"
+      }
+    ]
+  },
+  {
+    "模块名称": "教学管理系统",
+    "文件路径": "/system/teaching_management_system.py",
+    "包含函数": [
+      {
+        "函数名": "verify_credentials",
+        "输入参数": ["username: str", "password: str"],
+        "返回类型": "bool",
+        "功能说明": "验证用户名和密码"
+      },
+      {
+        "函数名": "store_login_record",
+        "输入参数": ["login_info: dict"],
+        "返回类型": "bool",
+        "功能说明": "存储学生登录记录"
+      },
+      {
+        "函数名": "display_course_list",
+        "输入参数": [],
+        "返回类型": "list",
+        "功能说明": "显示可供选择的课程列表"
+      },
+      {
+        "函数名": "confirm_course_selection",
+        "输入参数": ["course: str"],
+        "返回类型": "bool",
+        "功能说明": "确认课程选择成功"
+      },
+      {
+        "函数名": "update_personal_schedule",
+        "输入参数": [],
+        "返回类型": "None",
+        "功能说明": "更新学生个人课表"
+      },
+      {
+        "函数名": "display_personal_schedule",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "显示个人课表信息"
+      },
+      {
+        "函数名": "display_grades",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "显示成绩信息"
+      },
+      {
+        "函数名": "share_teacher_course_data",
+        "输入参数": ["course_data: dict"],
+        "返回类型": "bool",
+        "功能说明": "共享教师课程数据"
+      },
+      {
+        "函数名": "display_taught_courses_and_students",
+        "输入参数": [],
+        "返回类型": "dict",
+        "功能说明": "显示所授课程及学生名单信息"
+      },
+      {
+        "函数名": "store_system_config_data",
+        "输入参数": ["system_config_data: dict"],
+        "返回类型": "bool",
+        "功能说明": "存储管理员系统配置数据"
+      },
+      {
+        "函数名": "display_manageable_options",
+        "输入参数": [],
+        "返回类型": "list",
+        "功能说明": "显示可管理内容选项"
+      },
+      {
+        "函数名": "confirm_operation",
+        "输入参数": ["operation: str"],
+        "返回类型": "bool",
+        "功能说明": "确认操作成功"
+      }
+    ]
+  },
+  {
+    "模块名称": "服务器处理",
+    "文件路径": "/server/server_processing.py",
+    "包含函数": [
+      {
+        "函数名": "authenticate_user",
+        "输入参数": ["username: str", "password: str"],
+        "返回类型": "bool",
+        "功能说明": "验证用户名和密码"
+      },
+      {
+        "函数名": "save_login_record",
+        "输入参数": ["login_info: dict"],
+        "返回类型": "bool",
+        "功能说明": "存储学生登录记录"
+      },
+      {
+        "函数名": "share_course_data",
+        "输入参数": ["course_data: dict"],
+        "返回类型": "bool",
+        "功能说明": "共享教师课程数据"
+      },
+      {
+        "函数名": "save_system_config_data",
+        "输入参数": ["system_config_data: dict"],
+        "返回类型": "bool",
+        "功能说明": "存储管理员系统配置数据"
+      }
+    ]
+  }
+]
+
+【类图建模结构】
+{
+  "classes": [
+    {
+      "name": "TerminalDevice",
+      "attributes": ["system: TeachingManagementSystem"],
+      "methods": [
+        "open_login_interface()",
+        "send_credentials()",
+        "request_course_selection()",
+        "submit_course_selection()",
+        "request_personal_schedule()",
+        "request_grades()",
+        "request_taught_courses_and_students()",
+        "request_system_content_management()",
+        "submit_operation_request()"
+      ]
+    },
+    {
+      "name": "TeachingManagementSystem",
+      "attributes": ["server: Server"],
+      "methods": [
+        "verify_credentials()",
+        "store_login_record()",
+        "display_course_list()",
+        "confirm_course_selection()",
+        "update_personal_schedule()",
+        "display_personal_schedule()",
+        "display_grades()",
+        "share_teacher_course_data()",
+        "display_taught_courses_and_students()",
+        "store_system_config_data()",
+        "display_manageable_options()",
+        "confirm_operation()"
+      ]
+    },
+    {
+      "name": "Server",
+      "attributes": [],
+      "methods": [
+        "authenticate_user()",
+        "save_login_record()",
+        "share_course_data()",
+        "save_system_config_data()"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "TerminalDevice",
+      "to": "TeachingManagementSystem"
+    },
+    {
+      "from": "TeachingManagementSystem",
+      "to": "Server"
+    }
+  ]
+}
+
+【类图PlantUML代码】
+@startuml
+class TerminalDevice {
+  +system: TeachingManagementSystem
+  +open_login_interface()
+  +send_credentials()
+  +request_course_selection()
+  +submit_course_selection()
+  +request_personal_schedule()
+  +request_grades()
+  +request_taught_courses_and_students()
+  +request_system_content_management()
+  +submit_operation_request()
+}
+class TeachingManagementSystem {
+  +server: Server
+  +verify_credentials()
+  +store_login_record()
+  +display_course_list()
+  +confirm_course_selection()
+  +update_personal_schedule()
+  +display_personal_schedule()
+  +display_grades()
+  +share_teacher_course_data()
+  +display_taught_courses_and_students()
+  +store_system_config_data()
+  +display_manageable_options()
+  +confirm_operation()
+}
+class Server {
+  +authenticate_user()
+  +save_login_record()
+  +share_course_data()
+  +save_system_config_data()
+}
+TerminalDevice --> TeachingManagementSystem
+TeachingManagementSystem --> Server
+@enduml

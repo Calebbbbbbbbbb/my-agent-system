@@ -1,0 +1,326 @@
+{
+    "Scenario": "教务系统用户交互流程",
+    "Lifeline": ["学生:用户", "教师:用户", "管理员:用户", "教务系统:系统", "服务器:设备"],
+    "Message": [
+        {
+            "from": "学生",
+            "to": "教务系统",
+            "content": "登录请求(用户名, 密码):待验证",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "验证用户名和密码数据传输(用户名, 密码):已发送",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "验证结果",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "引导进入对应功能模块:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "提示用户名或密码错误:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "学生",
+            "to": "教务系统",
+            "content": "发起选课请求:已提交",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "检查课程名额和选课条件数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "检查结果",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "提示选课成功，更新课表:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "提示选课失败原因:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "学生",
+            "to": "教务系统",
+            "content": "课表查询请求:已提交",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "提取学生课表信息数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "学生课表信息",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "显示学生个人课表:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "学生",
+            "to": "教务系统",
+            "content": "成绩查询请求:已提交",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "提取学生成绩信息数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "学生成绩信息",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "学生",
+            "content": "显示学生成绩列表:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "教师",
+            "to": "教务系统",
+            "content": "授课信息查询请求:已提交",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "提取教师所授课程及学生名单信息数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "教师所授课程及学生名单信息",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "教师",
+            "content": "显示教师所授课程列表及学生名单:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "管理员",
+            "to": "教务系统",
+            "content": "课程管理指令:已下达",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "课程信息数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "操作结果",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "管理员",
+            "content": "提示操作成功（课程操作成功分支）:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "管理员",
+            "content": "提示操作失败原因（课程操作失败分支）:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "管理员",
+            "to": "教务系统",
+            "content": "权限管理指令:已下达",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "服务器",
+            "content": "用户权限信息数据传输:已完成",
+            "type": "sync"
+        },
+        {
+            "from": "服务器",
+            "to": "教务系统",
+            "content": "操作结果",
+            "type": "return"
+        },
+        {
+            "from": "教务系统",
+            "to": "管理员",
+            "content": "提示操作成功（权限操作成功分支）:无返回",
+            "type": "sync"
+        },
+        {
+            "from": "教务系统",
+            "to": "管理员",
+            "content": "提示操作失败原因（权限操作失败分支）:无返回",
+            "type": "sync"
+        }
+    ],
+    "CombinedFragment": [
+        {
+            "type": "alt",
+            "condition": "登录验证成功",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "学生",
+                    "content": "引导进入对应功能模块:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "登录验证失败",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "学生",
+                    "content": "提示用户名或密码错误:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "选课成功",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "学生",
+                    "content": "提示选课成功，更新课表:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "选课失败",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "学生",
+                    "content": "提示选课失败原因:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "课程操作成功",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "管理员",
+                    "content": "提示操作成功（课程操作成功分支）:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "课程操作失败",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "管理员",
+                    "content": "提示操作失败原因（课程操作失败分支）:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "权限操作成功",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "管理员",
+                    "content": "提示操作成功（权限操作成功分支）:无返回",
+                    "type": "sync"
+                }
+            ]
+        },
+        {
+            "type": "alt",
+            "condition": "权限操作失败",
+            "messages": [
+                {
+                    "from": "教务系统",
+                    "to": "管理员",
+                    "content": "提示操作失败原因（权限操作失败分支）:无返回",
+                    "type": "sync"
+                }
+            ]
+        }
+    ],
+    "TimingConstraint": [
+        {
+            "on": "登录请求",
+            "constraint": "<3s"
+        },
+        {
+            "on": "发起选课请求",
+            "constraint": "<3s"
+        },
+        {
+            "on": "课表查询请求",
+            "constraint": "<3s"
+        },
+        {
+            "on": "成绩查询请求",
+            "constraint": "<3s"
+        },
+        {
+            "on": "授课信息查询请求",
+            "constraint": "<3s"
+        },
+        {
+            "on": "课程管理指令",
+            "constraint": "<5s"
+        },
+        {
+            "on": "权限管理指令",
+            "constraint": "<5s"
+        }
+    ]
+}

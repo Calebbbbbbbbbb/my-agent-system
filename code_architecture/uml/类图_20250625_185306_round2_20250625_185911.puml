@@ -1,0 +1,33 @@
+@startuml
+class UserController {
+  +service: ServerService
+  +处理登录请求(username: str, password: str): bool
+  +处理选课请求(user_id: int, course_id: int): bool
+  +处理课表查询请求(user_id: int): dict
+  +处理成绩查询请求(user_id: int): dict
+  +处理授课信息查询请求(user_id: int): dict
+  +处理课程管理指令(admin_id: int, course_info: dict): bool
+  +处理权限管理指令(admin_id: int, permission_info: dict): bool
+}
+class ServerService {
+  +验证用户凭证(username: str, password: str): bool
+  +检查课程可用性(course_id: int): bool
+  +获取学生课表(user_id: int): dict
+  +获取学生成绩(user_id: int): dict
+  +获取教师授课信息(user_id: int): dict
+  +更新课程信息(course_info: dict): bool
+  +更新用户权限(permission_info: dict): bool
+  +加密存储用户信息(username: str, password: str): bool
+  +定期备份系统数据(): bool
+  +记录系统日志(operation: str, event: str): bool
+}
+class ClientInterface {
+  +controller: UserController
+  +显示错误提示(error_message: str): None
+  +自动重连服务器(): bool
+  +显示帮助文档(): None
+  +显示操作指南视频(): None
+}
+UserController --> ServerService
+ClientInterface --> UserController
+@enduml

@@ -1,0 +1,958 @@
+[
+  {
+    "name": "性能（系统响应时间应在合理范围内，如登录验证响应时间不超过 3 秒，查询信息响应时间不超过 5 秒，此需求与服务器相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "性能",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "系统响应时间应在合理范围内，如登录验证响应时间不超过 3 秒，查询信息响应时间不超过 5 秒，此需求与服务器相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "系统登录验证响应时间不超过3秒",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "处理登录请求：处理用户登录请求，验证用户名和密码",
+                  "score": 2
+                },
+                {
+                  "description": "验证用户凭证：验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统查询信息响应时间不超过5秒",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "处理课表查询请求：处理学生课表查询请求，提取学生课表信息",
+                  "score": 2
+                },
+                {
+                  "description": "处理成绩查询请求：处理学生成绩查询请求，提取学生成绩信息",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "性能（系统应能支持至少 1000 个并发用户同时在线使用，此需求与服务器相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "性能",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "系统应能支持至少 1000 个并发用户同时在线使用，此需求与服务器相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "服务器应能稳定处理至少1000个并发用户的连接请求",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "验证用户凭证：验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 2
+                },
+                {
+                  "description": "检查课程可用性：检查课程名额和选课条件，支持高并发",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "服务器在支持1000个并发用户同时在线时，系统响应时间不超过5秒",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "验证用户凭证：验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 2
+                },
+                {
+                  "description": "检查课程可用性：检查课程名额和选课条件，支持高并发",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "安全性（对用户的用户名和密码进行加密存储，防止信息泄露，此需求与服务器相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "安全性",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "对用户的用户名和密码进行加密存储，防止信息泄露，此需求与服务器相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "使用安全的加密算法对用户的用户名和密码进行加密",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "验证用户凭证：验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 2
+                },
+                {
+                  "description": "加密存储用户信息：对用户的用户名和密码进行加密存储",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "将加密后的用户名和密码存储在服务器的安全存储区域",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "对用户的用户名和密码进行加密存储",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "安全性（对系统数据进行定期备份，防止数据丢失，此需求与服务器相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "安全性",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "对系统数据进行定期备份，防止数据丢失，此需求与服务器相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "每周对服务器系统数据进行一次全量备份",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "每周对服务器上的系统数据进行一次全量备份，存储在异地服务器",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "备份数据存储在安全的异地服务器",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "每周对服务器上的系统数据进行一次全量备份，存储在异地服务器",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "安全性（对不同角色的用户设置不同的访问权限，防止越权操作，此需求与学生、教师、管理员相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "安全性",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "对不同角色的用户设置不同的访问权限，防止越权操作，此需求与学生、教师、管理员相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "为学生、教师、管理员分别设置不同的访问权限",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "处理权限管理指令：处理管理员权限管理指令，更新用户权限信息",
+                  "score": 2
+                },
+                {
+                  "description": "更新用户权限：更新用户权限信息",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "对用户操作进行权限验证，阻止越权操作",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "处理权限管理指令：处理管理员权限管理指令，更新用户权限信息",
+                  "score": 2
+                },
+                {
+                  "description": "更新用户权限：更新用户权限信息",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可用性（系统应保证每周 7 天，每天 24 小时可用，系统故障修复时间不超过 2 小时，此需求与服务器相关。）",
+    "score": 0.7,
+    "low_nodes": [],
+    "tree": {
+      "description": "可用性",
+      "score": 0.7,
+      "children": [
+        {
+          "description": "系统应保证每周 7 天，每天 24 小时可用，系统故障修复时间不超过 2 小时，此需求与服务器相关。",
+          "score": 0.7,
+          "children": [
+            {
+              "description": "系统需保证每周7天、每天24小时处于可用状态",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "定期备份系统数据：每周对服务器上的系统数据进行一次全量备份，存储在异地服务器",
+                  "score": 1
+                },
+                {
+                  "description": "自动重连服务器：网络恢复后，自动重新连接服务器",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "服务器故障修复时间不超过2小时",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "定期备份系统数据：每周对服务器上的系统数据进行一次全量备份，存储在异地服务器",
+                  "score": 0
+                },
+                {
+                  "description": "记录系统日志：记录服务器的操作和事件，支持按条件检索",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.7,
+            0.3
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "容错性（当系统出现异常情况（如网络中断、服务器故障等）时，应能给出明确的错误提示信息，此需求与电脑相关。）",
+    "score": 1.5,
+    "low_nodes": [],
+    "tree": {
+      "description": "容错性",
+      "score": 1.5,
+      "children": [
+        {
+          "description": "当系统出现异常情况（如网络中断、服务器故障等）时，应能给出明确的错误提示信息，此需求与电脑相关。",
+          "score": 1.5,
+          "children": [
+            {
+              "description": "当网络中断时，电脑系统应弹出明确提示网络中断的错误信息",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "显示错误提示：当系统出现异常时，显示明确的错误提示信息",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "当服务器故障时，电脑系统应弹出明确提示服务器故障的错误信息",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "显示错误提示：当系统出现异常时，显示明确的错误提示信息",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "容错性（系统应具备一定的自动恢复能力，如在网络恢复后能自动重新连接服务器，此需求与服务器相关。）",
+    "score": 1.6,
+    "low_nodes": [],
+    "tree": {
+      "description": "容错性",
+      "score": 1.6,
+      "children": [
+        {
+          "description": "系统应具备一定的自动恢复能力，如在网络恢复后能自动重新连接服务器，此需求与服务器相关。",
+          "score": 1.6,
+          "children": [
+            {
+              "description": "系统在网络恢复后10秒内自动重新连接服务器",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "网络恢复后，自动重新连接服务器",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统自动重新连接服务器的成功率不低于95%",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "网络恢复后，自动重新连接服务器",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "易用性（系统界面应简洁明了，操作流程应简单易懂，方便用户使用，此需求与电脑相关。）",
+    "score": 1.5,
+    "low_nodes": [],
+    "tree": {
+      "description": "易用性",
+      "score": 1.5,
+      "children": [
+        {
+          "description": "系统界面应简洁明了，操作流程应简单易懂，方便用户使用，此需求与电脑相关。",
+          "score": 1.5,
+          "children": [
+            {
+              "description": "系统界面元素数量不超过[X]个，布局清晰无冗余",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 1
+                },
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "操作流程步骤不超过[Y]步，每个步骤提示明确",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 2
+                },
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "易用性（提供必要的帮助文档和操作指南，帮助用户快速上手，此需求与电脑相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "易用性",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "提供必要的帮助文档和操作指南，帮助用户快速上手，此需求与电脑相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "提供电脑操作帮助文档，涵盖常见功能的操作步骤",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "提供电脑操作的详细帮助文档",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "提供电脑操作指南视频，引导用户快速上手",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.4,
+            0.6
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "合规性（系统应符合国家相关法律法规和教育行业的相关规定，此需求与学生相关。）",
+    "score": 1.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "合规性",
+      "score": 1.0,
+      "children": [
+        {
+          "description": "系统应符合国家相关法律法规和教育行业的相关规定，此需求与学生相关。",
+          "score": 1.0,
+          "children": [
+            {
+              "description": "系统应遵循国家关于学生信息保护的法律法规",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "对用户的用户名和密码进行加密存储",
+                  "score": 1
+                },
+                {
+                  "description": "对不同角色用户设置不同访问权限",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统应符合教育行业针对学生管理的相关规定",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "处理权限管理指令：处理管理员权限管理指令，更新用户权限信息",
+                  "score": 1
+                },
+                {
+                  "description": "更新用户权限：更新用户权限信息",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "界面美观性（系统界面设计应美观大方，色彩搭配协调，给用户良好的视觉体验，此需求与电脑相关。）",
+    "score": 0.0,
+    "low_nodes": [
+      "系统界面设计应美观大方，色彩搭配协调，给用户良好的视觉体验，此需求与电脑相关。"
+    ],
+    "tree": {
+      "description": "界面美观性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统界面设计应美观大方，色彩搭配协调，给用户良好的视觉体验，此需求与电脑相关。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统界面色彩对比度在 4.5:1 以上以确保清晰可读",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "系统未提供与系统界面色彩对比度相关的函数功能说明",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统界面元素布局遵循黄金分割比例以提升美观度",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "显示错误提示：当系统出现异常时，显示明确的错误提示信息",
+                  "score": 0
+                },
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可维护性（系统代码应具有良好的结构和注释，方便开发人员进行维护和扩展，此需求与服务器相关。）",
+    "score": 0.5,
+    "low_nodes": [],
+    "tree": {
+      "description": "可维护性",
+      "score": 0.5,
+      "children": [
+        {
+          "description": "系统代码应具有良好的结构和注释，方便开发人员进行维护和扩展，此需求与服务器相关。",
+          "score": 0.5,
+          "children": [
+            {
+              "description": "系统代码应遵循模块化设计，每个模块功能明确且具有清晰的接口",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "处理登录请求：处理用户登录请求，验证用户名和密码",
+                  "score": 1
+                },
+                {
+                  "description": "验证用户凭证：验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统代码的关键部分和复杂逻辑应添加详细的注释说明",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "验证用户凭证，验证用户的用户名和密码，支持高并发，对用户凭证加密验证",
+                  "score": 0
+                },
+                {
+                  "description": "检查课程可用性，检查课程名额和选课条件，支持高并发",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可维护性（提供系统日志功能，方便开发人员排查问题，此需求与服务器相关。）",
+    "score": 2.0,
+    "low_nodes": [],
+    "tree": {
+      "description": "可维护性",
+      "score": 2.0,
+      "children": [
+        {
+          "description": "提供系统日志功能，方便开发人员排查问题，此需求与服务器相关。",
+          "score": 2.0,
+          "children": [
+            {
+              "description": "系统日志应记录服务器的所有操作和事件信息",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "记录系统日志：记录服务器的操作和事件，支持按条件检索",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统日志应支持按时间、操作类型等条件进行检索",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "记录服务器的操作和事件，支持按条件检索",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可移植性（系统应能在主流的操作系统（如 Windows、Linux 等）上正常运行，此需求与电脑相关。）",
+    "score": 0.0,
+    "low_nodes": [
+      "系统应能在主流的操作系统（如 Windows、Linux 等）上正常运行，此需求与电脑相关。"
+    ],
+    "tree": {
+      "description": "可移植性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统应能在主流的操作系统（如 Windows、Linux 等）上正常运行，此需求与电脑相关。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统能在 Windows 操作系统上正常运行",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 0
+                },
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "系统能在 Linux 操作系统上正常运行",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可操作性（系统应提供简单易用的操作界面，用户可以方便地进行各种操作，此需求与电脑相关。）",
+    "score": 1.4,
+    "low_nodes": [],
+    "tree": {
+      "description": "可操作性",
+      "score": 1.4,
+      "children": [
+        {
+          "description": "系统应提供简单易用的操作界面，用户可以方便地进行各种操作，此需求与电脑相关。",
+          "score": 1.4,
+          "children": [
+            {
+              "description": "操作界面的操作步骤不超过3步即可完成常见操作",
+              "score": 1.0,
+              "children": [
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 1
+                },
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 1
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            },
+            {
+              "description": "操作界面的操作提示清晰易懂，用户误操作率低于5%",
+              "score": 2.0,
+              "children": [
+                {
+                  "description": "显示帮助文档：提供电脑操作的详细帮助文档",
+                  "score": 2
+                },
+                {
+                  "description": "显示操作指南视频：提供电脑操作的可视化操作指南视频",
+                  "score": 2
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.6,
+            0.4
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  },
+  {
+    "name": "可扩展性（系统应具备良好的扩展性，方便后续添加新的功能模块和业务需求，此需求与服务器相关。）",
+    "score": 0.0,
+    "low_nodes": [
+      "系统应具备良好的扩展性，方便后续添加新的功能模块和业务需求，此需求与服务器相关。"
+    ],
+    "tree": {
+      "description": "可扩展性",
+      "score": 0.0,
+      "children": [
+        {
+          "description": "系统应具备良好的扩展性，方便后续添加新的功能模块和业务需求，此需求与服务器相关。",
+          "score": 0.0,
+          "children": [
+            {
+              "description": "系统应支持在不修改现有架构的情况下添加新的功能模块",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "无",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "description": "系统应能在添加新业务需求时，服务器资源可按需灵活扩展",
+              "score": 0.0,
+              "children": [
+                {
+                  "description": "验证用户凭证，支持高并发，对用户凭证加密验证",
+                  "score": 0
+                },
+                {
+                  "description": "检查课程可用性，支持高并发",
+                  "score": 0
+                }
+              ],
+              "weights": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "weights": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "weights": [
+        1.0
+      ]
+    }
+  }
+]

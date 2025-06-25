@@ -1,0 +1,22 @@
+@startuml
+class UserController {
+  +service: ServerService
+  +handle_login_request()
+  +handle_course_selection_request()
+  +handle_course_schedule_query()
+  +handle_grade_query()
+  +handle_teaching_info_query()
+  +handle_course_management()
+  +handle_permission_management()
+}
+class ServerService {
+  +verify_user_credentials()
+  +check_course_availability()
+  +get_student_course_schedule()
+  +get_student_grades()
+  +get_teacher_teaching_info()
+  +update_course_info()
+  +update_user_permissions()
+}
+UserController --> ServerService
+@enduml

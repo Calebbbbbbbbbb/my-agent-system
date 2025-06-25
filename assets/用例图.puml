@@ -2,47 +2,53 @@
 @startuml
 left to right direction
 
-title 教学管理系统用例图
+title 教务系统用例图
 
-actor "学生"
-actor "教师"
-actor "管理员"
-actor "终端设备"
-actor "服务器"
+actor "学生" as student
+actor "教师" as teacher
+actor "管理员" as admin
 
-usecase "用户登录"
-usecase "课程选择"
-usecase "个人课表查看"
-usecase "成绩查询"
-usecase "所授课程及学生名单查看"
-usecase "系统内容管理"
+rectangle "教务系统" {
+    usecase "用户登录" as login
+    usecase "学生选课" as select_course
+    usecase "查看个人课表" as view_schedule
+    usecase "查询成绩" as query_grades
+    usecase "查看所授课程及学生名单" as view_course_students
+    usecase "管理课程信息" as manage_course_info
+    usecase "管理用户权限" as manage_user_permissions
+}
 
-"学生" --> "用户登录"
-"学生" --> "课程选择"
-"学生" --> "个人课表查看"
-"学生" --> "成绩查询"
+student -- select_course
+student -- view_schedule
+student -- query_grades
+teacher -- view_course_students
+admin -- manage_course_info
+admin -- manage_user_permissions
 
-"教师" --> "用户登录"
-"教师" --> "所授课程及学生名单查看"
-
-"管理员" --> "用户登录"
-"管理员" --> "系统内容管理"
-
-"终端设备" --> "用户登录"
-"服务器" --> "用户登录"
-"服务器" --> "课程选择"
-"服务器" --> "所授课程及学生名单查看"
-"服务器" --> "系统内容管理"
+select_course ..> login : include
+view_schedule ..> login : include
+query_grades ..> login : include
+view_course_students ..> login : include
+manage_course_info ..> login : include
+manage_user_permissions ..> login : include
 
 @enduml
 ```
 
 ### 代码解释：
-1. **整体结构**：使用 `@startuml` 和 `@enduml` 包裹整个用例图代码，这是 PlantUML 定义图形的标准格式。
-2. **方向设置**：`left to right direction` 用于设置图形的绘制方向为从左到右。
-3. **标题设置**：`title 教学管理系统用例图` 为用例图添加了标题。
-4. **参与者定义**：通过 `actor` 关键字定义了 JSON 中列出的所有参与者，如 `actor "学生"`、`actor "教师"` 等。
-5. **用例定义**：使用 `usecase` 关键字定义了 JSON 中列出的所有用例，如 `usecase "用户登录"`、`usecase "课程选择"` 等。
-6. **关联关系**：使用 `-->` 符号表示参与者与用例之间的关联关系，根据 JSON 中的 `Association` 数组，依次定义了各个参与者与用例之间的关联。
+1. **基本设置**：
+    - `@startuml` 和 `@enduml` 是 PlantUML 代码的起始和结束标记。
+    - `left to right direction` 用于设置图形的布局方向为从左到右。
+    - `title` 用于设置用例图的标题。
 
-将上述代码保存为 `.puml` 文件，然后使用 PlantUML 工具（如在线编辑器、本地 IDE 插件等）即可生成对应的用例图。
+2. **参与者（Actor）定义**：
+    - 使用 `actor` 关键字定义了三个参与者：学生、教师和管理员，并分别使用别名 `student`、`teacher` 和 `admin` 来引用。
+
+3. **系统和用例（UseCase）定义**：
+    - 使用 `rectangle` 关键字定义了“教务系统”，并在其中使用 `usecase` 关键字定义了所有的用例，同时为每个用例设置了别名。
+
+4. **关联关系（Association）**：
+    - 使用 `--` 符号表示参与者和用例之间的关联关系，根据 JSON 中的 `Association` 数组进行了相应的连接。
+
+5. **包含关系（UseCase - Include）**：
+    - 使用 `..>` 符号和 `: include` 标签表示用例之间的包含关系，根据 JSON 中的 `UseCase-Include` 数组进行了相应的设置。

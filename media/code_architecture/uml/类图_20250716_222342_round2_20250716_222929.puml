@@ -1,0 +1,54 @@
+```plantuml
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +security_service: SecurityService
+  +提交物品登记请求()
+  +提交失物发布请求()
+  +请求信息匹配与推荐()
+  +发送私信或留言请求()
+  +提交失物认领请求()
+  +上传物品照片()
+  +填写联系人信息()
+  +提交信息审核请求()
+  +发布系统管理操作请求()
+  +处理可疑发布操作()
+  +提交处理异常信息请求()
+}
+class LostAndFoundService {
+  +security_service: SecurityService
+  +extension_service: ExtensionService
+  +fault_tolerance_service: FaultToleranceService
+  +确认物品登记信息()
+  +确认失物发布信息()
+  +进行信息匹配与推荐()
+  +提供私信或留言的沟通渠道()
+  +处理失物认领请求()
+  +审核信息()
+  +处理系统管理操作请求()
+  +处理可疑发布操作()
+  +处理异常信息请求()
+  +确认物品照片上传信息()
+  +确认联系人信息填写()
+}
+class SecurityService {
+  +encrypt_contact_info()
+  +verify_admin_identity()
+  +check_admin_permission()
+  +use_secure_protocol()
+}
+class ExtensionService {
+  +add_server_resources()
+  +monitor_system_performance()
+}
+class FaultToleranceService {
+  +retry_operation()
+  +provide_error_message()
+}
+UserController --> LostAndFoundService
+UserController --> SecurityService
+LostAndFoundService --> SecurityService
+LostAndFoundService --> ExtensionService
+LostAndFoundService --> FaultToleranceService
+@enduml
+```

@@ -1,0 +1,242 @@
+{
+  "Scenario": "失物招领系统交互流程",
+  "Lifeline": ["普通用户:用户", "管理员:用户", "失物招领系统:系统"],
+  "Message": [
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "提交物品登记请求(物品名称, 描述, 地点, 时间, 照片):无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "确认信息:成功",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "提交失物发布请求（描述, 地点, 时间, 联系方式）:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "确认信息:成功",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "请求信息匹配与推荐（特征）:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "信息匹配与推荐结果(结果列表)",
+      "type": "return"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "推送推荐信息（成功，返回候选列表）",
+      "type": "async"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "提示无匹配项",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "发送私信或留言请求（内容, 目标用户）:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "提供私信或留言的沟通渠道（已送达）",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "提交失物认领请求（物品ID, 验证信息）:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "认领结果反馈（认领中）",
+      "type": "return"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "拒绝认领，提示重新提供信息或联系管理员",
+      "type": "return"
+    },
+    {
+      "from": "管理员",
+      "to": "失物招领系统",
+      "content": "提交信息审核请求（信息ID）:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "管理员",
+      "content": "审核结果（已审核）",
+      "type": "return"
+    },
+    {
+      "from": "管理员",
+      "to": "失物招领系统",
+      "content": "发布系统管理操作请求:无",
+      "type": "sync"
+    },
+    {
+      "from": "管理员",
+      "to": "失物招领系统",
+      "content": "处理可疑发布操作:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "管理员",
+      "content": "处理结果",
+      "type": "return"
+    },
+    {
+      "from": "管理员",
+      "to": "失物招领系统",
+      "content": "提交处理异常信息请求:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "管理员",
+      "content": "处理结果",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "上传物品照片:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "确认信息:成功",
+      "type": "return"
+    },
+    {
+      "from": "普通用户",
+      "to": "失物招领系统",
+      "content": "填写联系人信息:无",
+      "type": "sync"
+    },
+    {
+      "from": "失物招领系统",
+      "to": "普通用户",
+      "content": "确认信息:成功",
+      "type": "return"
+    }
+  ],
+  "CombinedFragment": [
+    {
+      "type": "alt",
+      "condition": "信息匹配成功",
+      "messages": [
+        {
+          "from": "失物招领系统",
+          "to": "普通用户",
+          "content": "推送推荐信息（成功，返回候选列表）",
+          "type": "async"
+        }
+      ]
+    },
+    {
+      "type": "alt",
+      "condition": "信息匹配失败",
+      "messages": [
+        {
+          "from": "失物招领系统",
+          "to": "普通用户",
+          "content": "提示无匹配项",
+          "type": "return"
+        }
+      ]
+    },
+    {
+      "type": "alt",
+      "condition": "验证信息匹配",
+      "messages": [
+        {
+          "from": "失物招领系统",
+          "to": "普通用户",
+          "content": "认领结果反馈（认领中）",
+          "type": "return"
+        }
+      ]
+    },
+    {
+      "type": "alt",
+      "condition": "验证信息不匹配",
+      "messages": [
+        {
+          "from": "失物招领系统",
+          "to": "普通用户",
+          "content": "拒绝认领，提示重新提供信息或联系管理员",
+          "type": "return"
+        }
+      ]
+    }
+  ],
+  "TimingConstraint": [
+    {
+      "on": "提交物品登记请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "提交失物发布请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "请求信息匹配与推荐",
+      "constraint": "<5s"
+    },
+    {
+      "on": "发送私信或留言请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "提交失物认领请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "提交信息审核请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "处理可疑发布操作",
+      "constraint": "<5s"
+    },
+    {
+      "on": "提交处理异常信息请求",
+      "constraint": "<5s"
+    },
+    {
+      "on": "上传物品照片",
+      "constraint": "<5s"
+    },
+    {
+      "on": "填写联系人信息",
+      "constraint": "<5s"
+    }
+  ]
+}

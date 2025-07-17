@@ -1,0 +1,44 @@
+```plantuml
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "普通用户" as user
+actor "管理员" as admin
+
+rectangle "失物招领系统" {
+    usecase "物品登记" as uc1
+    usecase "失物发布" as uc2
+    usecase "信息匹配与推荐" as uc3
+    usecase "联系与认领管理" as uc4
+    usecase "管理后台与审核功能" as uc5
+    usecase "处理可疑发布" as uc6
+    usecase "处理异常信息" as uc7
+    usecase "上传图片" as uc8
+    usecase "填写联系人信息" as uc9
+}
+
+user -- uc1
+user -- uc2
+user -- uc3
+user -- uc4
+user -- uc8
+user -- uc9
+
+admin -- uc5
+admin -- uc6
+admin -- uc7
+
+uc1 ..> uc8 : include
+uc2 ..> uc9 : include
+
+@enduml
+```
+
+### 代码解释：
+1. **基本结构**：使用 `@startuml` 和 `@enduml` 包裹整个用例图代码，这是 PlantUML 定义图形的标准格式。
+2. **参与者定义**：使用 `actor` 关键字定义了两个参与者，分别是“普通用户”和“管理员”，并使用 `as` 关键字为其指定了别名，方便后续引用。
+3. **系统边界**：使用 `rectangle` 关键字定义了“失物招领系统”的边界，将所有用例包含在内。
+4. **用例定义**：在 `rectangle` 内部使用 `usecase` 关键字定义了各个用例，并为每个用例指定了别名。
+5. **关联关系**：使用 `--` 符号表示参与者与用例之间的关联关系，将参与者和对应的用例连接起来。
+6. **包含关系**：使用 `..>` 符号和 `: include` 标签表示用例之间的包含关系，如“物品登记”包含“上传图片”，“失物发布”包含“填写联系人信息”。

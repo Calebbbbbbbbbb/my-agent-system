@@ -1,0 +1,198 @@
+【代码架构文档】
+[
+  {
+    "模块名称": "用户管理",
+    "文件路径": "/user/user_controller.py",
+    "包含函数": [
+      {
+        "函数名": "submit_item_registration",
+        "输入参数": ["item_name: str", "description: str", "location: str", "time: str", "photo: bytes"],
+        "返回类型": "str",
+        "功能说明": "普通用户提交物品登记请求"
+      },
+      {
+        "函数名": "submit_lost_item_publish",
+        "输入参数": ["description: str", "location: str", "time: str", "contact_info: str"],
+        "返回类型": "str",
+        "功能说明": "普通用户提交失物发布请求"
+      },
+      {
+        "函数名": "request_info_matching",
+        "输入参数": ["features: str"],
+        "返回类型": "list",
+        "功能说明": "普通用户请求信息匹配与推荐"
+      },
+      {
+        "函数名": "send_private_message",
+        "输入参数": ["content: str", "target_user: str"],
+        "返回类型": "str",
+        "功能说明": "普通用户发送私信或留言请求"
+      },
+      {
+        "函数名": "submit_lost_item_claim",
+        "输入参数": ["item_id: int", "verification_info: str"],
+        "返回类型": "str",
+        "功能说明": "普通用户提交失物认领请求"
+      },
+      {
+        "函数名": "upload_item_photo",
+        "输入参数": ["photo: bytes"],
+        "返回类型": "str",
+        "功能说明": "普通用户上传物品照片"
+      },
+      {
+        "函数名": "fill_contact_info",
+        "输入参数": ["contact_info: str"],
+        "返回类型": "str",
+        "功能说明": "普通用户填写联系人信息"
+      },
+      {
+        "函数名": "submit_info_audit",
+        "输入参数": ["info_id: int"],
+        "返回类型": "str",
+        "功能说明": "管理员提交信息审核请求"
+      },
+      {
+        "函数名": "publish_system_management_op",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "管理员发布系统管理操作请求"
+      },
+      {
+        "函数名": "handle_suspicious_publish",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "管理员处理可疑发布操作"
+      },
+      {
+        "函数名": "submit_exception_handling",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "管理员提交处理异常信息请求"
+      }
+    ]
+  },
+  {
+    "模块名称": "失物招领系统服务",
+    "文件路径": "/service/lost_and_found_service.py",
+    "包含函数": [
+      {
+        "函数名": "confirm_item_registration",
+        "输入参数": ["item_name: str", "description: str", "location: str", "time: str", "photo: bytes"],
+        "返回类型": "str",
+        "功能说明": "系统确认物品登记信息"
+      },
+      {
+        "函数名": "confirm_lost_item_publish",
+        "输入参数": ["description: str", "location: str", "time: str", "contact_info: str"],
+        "返回类型": "str",
+        "功能说明": "系统确认失物发布信息"
+      },
+      {
+        "函数名": "perform_info_matching",
+        "输入参数": ["features: str"],
+        "返回类型": "list",
+        "功能说明": "系统进行信息匹配与推荐"
+      },
+      {
+        "函数名": "provide_message_channel",
+        "输入参数": ["content: str", "target_user: str"],
+        "返回类型": "str",
+        "功能说明": "系统提供私信或留言的沟通渠道"
+      },
+      {
+        "函数名": "handle_lost_item_claim",
+        "输入参数": ["item_id: int", "verification_info: str"],
+        "返回类型": "str",
+        "功能说明": "系统处理失物认领请求"
+      },
+      {
+        "函数名": "audit_info",
+        "输入参数": ["info_id: int"],
+        "返回类型": "str",
+        "功能说明": "系统审核信息"
+      },
+      {
+        "函数名": "handle_system_management_op",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "系统处理管理员发布的系统管理操作请求"
+      },
+      {
+        "函数名": "handle_suspicious_publish_op",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "系统处理管理员的可疑发布操作"
+      },
+      {
+        "函数名": "handle_exception_info",
+        "输入参数": [],
+        "返回类型": "str",
+        "功能说明": "系统处理管理员提交的异常信息请求"
+      },
+      {
+        "函数名": "confirm_photo_upload",
+        "输入参数": ["photo: bytes"],
+        "返回类型": "str",
+        "功能说明": "系统确认物品照片上传信息"
+      },
+      {
+        "函数名": "confirm_contact_info",
+        "输入参数": ["contact_info: str"],
+        "返回类型": "str",
+        "功能说明": "系统确认联系人信息填写"
+      }
+    ]
+  }
+]
+
+【类图建模结构】
+{
+  "classes": [
+    {
+      "name": "UserController",
+      "attributes": ["service: LostAndFoundService"],
+      "methods": ["submit_item_registration()", "submit_lost_item_publish()", "request_info_matching()", "send_private_message()", "submit_lost_item_claim()", "upload_item_photo()", "fill_contact_info()", "submit_info_audit()", "publish_system_management_op()", "handle_suspicious_publish()", "submit_exception_handling()"]
+    },
+    {
+      "name": "LostAndFoundService",
+      "attributes": [],
+      "methods": ["confirm_item_registration()", "confirm_lost_item_publish()", "perform_info_matching()", "provide_message_channel()", "handle_lost_item_claim()", "audit_info()", "handle_system_management_op()", "handle_suspicious_publish_op()", "handle_exception_info()", "confirm_photo_upload()", "confirm_contact_info()"]
+    }
+  ],
+  "relations": [
+    {"from": "UserController", "to": "LostAndFoundService"}
+  ]
+}
+
+【类图PlantUML代码】
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +submit_item_registration()
+  +submit_lost_item_publish()
+  +request_info_matching()
+  +send_private_message()
+  +submit_lost_item_claim()
+  +upload_item_photo()
+  +fill_contact_info()
+  +submit_info_audit()
+  +publish_system_management_op()
+  +handle_suspicious_publish()
+  +submit_exception_handling()
+}
+class LostAndFoundService {
+  +confirm_item_registration()
+  +confirm_lost_item_publish()
+  +perform_info_matching()
+  +provide_message_channel()
+  +handle_lost_item_claim()
+  +audit_info()
+  +handle_system_management_op()
+  +handle_suspicious_publish_op()
+  +handle_exception_info()
+  +confirm_photo_upload()
+  +confirm_contact_info()
+}
+UserController --> LostAndFoundService
+@enduml

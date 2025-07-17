@@ -1,0 +1,30 @@
+@startuml
+class UserController {
+  +service: LostAndFoundService
+  +submit_item_registration()
+  +submit_lost_item_publish()
+  +request_info_matching()
+  +send_private_message()
+  +submit_lost_item_claim()
+  +upload_item_photo()
+  +fill_contact_info()
+  +submit_info_audit()
+  +publish_system_management_op()
+  +handle_suspicious_publish()
+  +submit_exception_handling()
+}
+class LostAndFoundService {
+  +confirm_item_registration()
+  +confirm_lost_item_publish()
+  +perform_info_matching()
+  +provide_message_channel()
+  +handle_lost_item_claim()
+  +audit_info()
+  +handle_system_management_op()
+  +handle_suspicious_publish_op()
+  +handle_exception_info()
+  +confirm_photo_upload()
+  +confirm_contact_info()
+}
+UserController --> LostAndFoundService
+@enduml
